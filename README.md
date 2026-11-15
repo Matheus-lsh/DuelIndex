@@ -1,6 +1,6 @@
 # DuelIndex
 Plataforma para consulta, comparação e acompanhamento histórico
-dos preços de cartas.
+dos preços de cartas de yu-gi-oh.
 
 ## Funcionalidades
 

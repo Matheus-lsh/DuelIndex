@@ -42,21 +42,7 @@ let filtrosPesquisa = null;
 let identificadorPesquisa = 0;
 let cartaSelecionada = null;
 let banlistCarregada = false;
-let jsonImp = { "cotacoes": {
-                    "dolar": { valor: 5.35 },
-                    "euro": { valor: 6.20 }
-                },
-                "impostos" :{
-                    "estados_unidos" : {
-                        "imposto_importacao" : 10,
-                        "tarifas_adicionais" : 0
-                    },
-                    "uniao_europeia": {
-                        "imposto_importacao": 20,
-                        "iva" : 0
-                    }
-                }}
-//await consultarCotacoesEImpostos();
+let jsonImp = null;
 
 function normalizarTexto(texto) {
     return String(texto).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
@@ -494,6 +480,17 @@ elementos.listaSideDeck.addEventListener("click", event => {
 
 async function inicializar() {
     try {
+        if (elementos.geminiApiKey.value) {
+            jsonImp = await consultarCotacoesEImpostos();
+        }
+        if(jsonImp == null){
+             console.log("Ativando valores padrão!")
+            jsonImp = { "cotacoes": {
+                    "dolar": { valor: 5.67 },
+                    "euro": { valor: 6.25 }//data dia 15/11/2026
+                    }
+                }
+        }        
         banlist = await buscarBanlist();
         banlistCarregada = true;
         console.log("Banlist carregada!");
@@ -587,7 +584,7 @@ function existeDeckPrincipal() {
     return deck.length > 0;
 }
 
-elementos.salvarChaveApi.addEventListener("click", () => {
+elementos.salvarChaveApi.addEventListener("click",async () => {
 
     const chave = elementos.geminiApiKey.value.trim();
 
@@ -597,7 +594,14 @@ elementos.salvarChaveApi.addEventListener("click", () => {
 
         elementos.statusChaveApi.textContent =
             "Chave API configurada nesta sessão.";
-
+        jsonImp = await consultarCotacoesEImpostos();
+        if(jsonImp == null){
+            jsonImp = { "cotacoes": {
+                    "dolar": { valor: 5.67 },
+                    "euro": { valor: 6.25 }//data dia 15/11/2026
+                    }
+                }
+        }
         elementos.statusChaveApi.style.color = "green";
 
         elementos.geminiApiKey.value = "";

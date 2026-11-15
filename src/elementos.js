@@ -159,13 +159,7 @@ function adicionarPrecos(container, carta,dadosCotacao) {
             ? dadosCotacao.cotacoes.euro.valor
             : dadosCotacao.cotacoes.dolar.valor;
 
-        const impostoImport = plataforma.chave === "cardmarket_price"
-            ? dadosCotacao.impostos.uniao_europeia.imposto_importacao
-            : dadosCotacao.impostos.estados_unidos.imposto_importacao;
-        if(plataforma.chave != "cardmarket"){
-            console.log(impostoImport); 
-        }
-        const precoConvertido = preco * cotacao + impostoImport;
+        const precoConvertido = preco * cotacao;
 
         const formatado = valor === null || valor === undefined || valor === ""
             ? "Não disponível"

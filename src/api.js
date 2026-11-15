@@ -145,17 +145,6 @@ export async function consultarCotacoesEImpostos() {
 
         1. Cotação do dólar americano (USD) em reais (BRL).
         2. Cotação do euro (EUR) em reais (BRL).
-        3. Imposto de importação dos Estados Unidos.
-        4. Imposto de importação da União Europeia.
-        5. IVA (VAT) da União Europeia.
-
-        Informe:
-        - Cotação atual das moedas.
-        - Percentual dos impostos.
-        - Tarifas adicionais, quando existirem.
-        - Diferença entre imposto de importação e IVA.
-        - Fontes utilizadas.
-        - Data e horário da consulta.
 
         Não invente valores.
         Se a alíquota depender do produto, explique isso.
@@ -165,32 +154,12 @@ export async function consultarCotacoesEImpostos() {
         seguindo esta estrutura:
 
         {
-            "consulta": {
-                "data": null,
-                "horario": null
-            },
             "cotacoes": {
                 "dolar": {
-                    "valor": null,
-                    "fonte": null
+                    "valor": float,
                 },
                 "euro": {
-                    "valor": null,
-                    "fonte": null
-                }
-            },
-            "impostos": {
-                "estados_unidos": {
-                    "imposto_importacao": null,
-                    "tarifas_adicionais": null,
-                    "observacoes": null,
-                    "fonte": null
-                },
-                "uniao_europeia": {
-                    "imposto_importacao": null,
-                    "iva": null,
-                    "observacoes": null,
-                    "fonte": null
+                    "valor": float,
                 }
             }
         }
@@ -265,9 +234,8 @@ export async function consultarCotacoesEImpostos() {
 
     } catch (erro) {
 
-        console.error("Erro ao consultar Gemini:", erro.message);
-
-        throw erro;
+        console.error("Erro ao consultar a cotação", erro.message);
+        return null;
     }
 }
 

@@ -15,7 +15,7 @@ import {
 
 const CARTAS_POR_PAGINA = 20;
 const LIMITE_DECK = 60;
-const MINIMO_DECK = 2;
+const MINIMO_DECK = 40;
 const LIMITE_EXTRA_DECK = 15;
 const LIMITE_SIDE_DECK = 15;
 

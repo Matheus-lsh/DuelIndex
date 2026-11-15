@@ -13,7 +13,7 @@ dos preços de cartas.
 ![Página inicial](./rep/imagens/pagina.png)
 
 ### Consulta de cartas
-![Consulta de cartas](./rep/imagens/consulta.png)
+![Consulta de cartas](./rep/imagens/captura.png)
 
 ### Histórico de preços
 ![Histórico de preços](./rep/imagens/historico.png)

@@ -14,6 +14,7 @@ dos preços de cartas.
 
 ### Consulta de cartas
 ![Consulta de cartas](./rep/imagens/captura.png)
+![Consulta de cartas](./rep/imagens/captura2.png)
 
 ### Histórico de preços
 ![Histórico de preços](./rep/imagens/historico.png)

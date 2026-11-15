@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yu-Gi-Oh! Card Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>DuelIndex</h1>
+        <p>
+            Pesquise cartas por nome, tipo, atributo,
+            arquétipo, descrição e tipo de carta.
+        </p>
+    </header>
+    <section class="configuracao-api">
+        <h2>Configuração da API Gemini</h2>
+
+        <div class="campo-api">
+            <label for="geminiApiKey">Chave API:</label>
+
+            <div class="input-api-container">
+                <input
+                    type="password"
+                    id="geminiApiKey"
+                    placeholder="Insira sua chave API do Gemini"
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    id="mostrarChaveApi"
+                    class="botao-visualizar"
+                >
+                    Mostrar
+                </button>
+            </div>
+
+            <button
+                type="button"
+                id="salvarChaveApi"
+                class="botao-salvar-api"
+            >
+                Salvar chave API
+            </button>
+
+            <p id="statusChaveApi" aria-live="polite">
+                Nenhuma chave configurada.
+            </p>
+        </div>
+    </section>
+    <main>
+        <section class="painel">
+
+            <form id="formPesquisa" class="formulario">
+
+                <div class="campo">
+                    <label for="nome">Nome</label>
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Ex.: Dark Magician"
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="descricao">Descrição / Efeito</label>
+                    <input
+                        type="text"
+                        id="descricao"
+                        placeholder="Ex.: Draw 2 cards"
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="tipo">Tipo</label>
+                    <input
+                        type="text"
+                        id="tipo"
+                        placeholder="Ex.: Dragon, Warrior"
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="atributo">Atributo</label>
+                    <select id="atributo">
+                        <option value="">Todos os atributos</option>
+                        <option value="DARK">DARK</option>
+                        <option value="LIGHT">LIGHT</option>
+                        <option value="EARTH">EARTH</option>
+                        <option value="WATER">WATER</option>
+                        <option value="FIRE">FIRE</option>
+                        <option value="WIND">WIND</option>
+                        <option value="DIVINE">DIVINE</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="arquetipo">Arquétipo</label>
+                    <input
+                        type="text"
+                        id="arquetipo"
+                        placeholder="Ex.: Blue-Eyes"
+                    >
+                </div>
+
+                <div class="campo">
+    <label for="nivel">Nível / Rank</label>
+    <input
+        type="number"
+        id="nivel"
+        min="0"
+        max="13"
+        placeholder="Ex.: 8"
+    >
+</div>
+
+    <div class="campo campo-tipos">
+        <details>
+            <summary>Selecionar tipo de carta</summary>
+
+            <select id="tipoCarta">
+                <option value="">Todos os tipos</option>
+
+                <option value="Spell Card">Spell Card</option>
+                <option value="Trap Card">Trap Card</option>
+                <option value="Normal Monster">Normal Monster</option>
+                <option value="Normal Tuner Monster">Normal Tuner Monster</option>
+                <option value="Effect Monster">Effect Monster</option>
+                <option value="Tuner Monster">Tuner Monster</option>
+                <option value="Flip Monster">Flip Monster</option>
+                <option value="Flip Effect Monster">Flip Effect Monster</option>
+                <option value="Spirit Monster">Spirit Monster</option>
+                <option value="Union Effect Monster">Union Effect Monster</option>
+                <option value="Gemini Monster">Gemini Monster</option>
+                <option value="Pendulum Effect Monster">Pendulum Effect Monster</option>
+                <option value="Pendulum Normal Monster">Pendulum Normal Monster</option>
+                <option value="Pendulum Effect Ritual Monster">Pendulum Effect Ritual Monster</option>
+                <option value="Pendulum Tuner Effect Monster">Pendulum Tuner Effect Monster</option>
+                <option value="Ritual Monster">Ritual Monster</option>
+                <option value="Ritual Effect Monster">Ritual Effect Monster</option>
+                <option value="Toon Monster">Toon Monster</option>
+                <option value="Fusion Monster">Fusion Monster</option>
+                <option value="Synchro Monster">Synchro Monster</option>
+                <option value="Synchro Tuner Monster">Synchro Tuner Monster</option>
+                <option value="Synchro Pendulum Effect Monster">Synchro Pendulum Effect Monster</option>
+                <option value="XYZ Monster">XYZ Monster</option>
+                <option value="XYZ Pendulum Effect Monster">XYZ Pendulum Effect Monster</option>
+                <option value="Link Monster">Link Monster</option>
+                <option value="Pendulum Flip Effect Monster">Pendulum Flip Effect Monster</option>
+                <option value="Pendulum Effect Fusion Monster">Pendulum Effect Fusion Monster</option>
+                <option value="Token">Token</option>
+            </select>
+        </details>
+    </div>
+
+                <button type="submit" id="botaoPesquisar">
+                    Pesquisar cartas
+                </button>
+
+            </form>
+
+            <p id="mensagem" aria-live="polite"></p>
+
+            <section id="resultados" aria-label="Resultados da pesquisa">
+            </section>
+            <nav id="paginacao" class="paginacao" aria-label="Paginação" hidden>
+
+                <button type="button" id="paginaAnterior" disabled>
+                    &laquo; Anterior
+                </button>
+
+                <span id="informacaoPagina">
+                    Página 1 de 1
+                </span>
+
+                <button type="button" id="proximaPagina" disabled>
+                    Próxima &raquo;
+                </button>
+
+            </nav>
+
+            <dialog id="modalCarta" class="modal">
+                <div class="conteudo-modal">
+                    <button
+                        type="button"
+                        id="fecharModal"
+                        class="fechar-modal"
+                        aria-label="Fechar"
+                    >
+                        &times;
+                    </button>
+                    <div id="detalhesCarta"></div>
+                    <div class="acoes-carta">
+
+                    <button type="button" id="adicionarDeck">
+                        Adicionar ao Deck
+                    </button>
+
+                    <button type="button" id="adicionarCarrinho">
+                        Adicionar ao Carrinho
+                    </button>
+                    <button id="adicionarSideDeck">
+                        Adicionar ao Side-Deck
+                    </button>
+
+                </div>
+                </div>
+            </dialog>
+
+        </section>
+        <section>
+            <h2>Meu Deck</h2>
+            <div class="campo-salvar-deck">
+                <label for="nomeDeck">Nome do deck:</label>
+                <input
+                    type="text"
+                    id="nomeDeck"
+                    placeholder="Ex: Deck Dragão Branco"
+                    maxlength="50"
+                >
+                <button type="button" id="salvarDeck">
+                    Salvar deck
+                </button>
+            </div>
+            <h3>Deck Principal</h3>
+            <div id="listaDeck"></div>
+            <p id="totalDeck">0 / 60 cartas</p>
+            <hr>
+            <h3>Extra Deck</h3>
+                <div id="listaExtraDeck"></div>
+                <p id="totalExtraDeck">0 / 15 cartas</p>
+            <hr>
+            <h3>Side Deck</h3>
+                <ul id="listaSideDeck"></ul>
+                <p id="totalSideDeck">0/15 cartas</p>
+            <section>
+        </section>
+
+        <section>
+            <h2>Meu Carrinho</h2>
+            <div id="listaCarrinho"></div>
+            <p id="totalCarrinho">0 cartas</p>
+            <button id="salvarCarrinho">Salvar Carrinho</button>
+        </section>
+        <section id="decksSalvosContainer">
+            <h2>Decks salvos</h2>
+
+            <button type="button" id="atualizarDecks">
+                Atualizar decks
+            </button>
+
+            <div id="listaDecksSalvos"></div>
+        </section>
+        <section>
+            <div id="listaCarrinho"></div>
+
+            <button id="AtualizarCarrinho">
+                Atualizar carrinho
+            </button>
+
+            <hr>
+
+            <h3>Carrinho recuperado da API</h3>
+
+            <div id="listaCarrinhoSalvo"></div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>

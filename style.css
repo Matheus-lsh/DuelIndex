@@ -1,0 +1,1395 @@
+
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
+:root {
+    --preto: #111111;
+    --preto-suave: #1c1c1c;
+    --cinza-escuro: #333333;
+    --cinza: #777777;
+    --cinza-medio: #cccccc;
+    --cinza-claro: #e8e8e8;
+    --fundo: #f5f5f5;
+    --branco: #ffffff;
+
+    --borda: #dedede;
+    --sombra: 0 4px 15px rgba(0, 0, 0, 0.06);
+    --sombra-forte: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+    --raio: 10px;
+    --transicao: 0.2s ease;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fundo);
+    color: var(--preto);
+    line-height: 1.5;
+}
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+header {
+    background: var(--preto);
+    color: var(--branco);
+    padding: 32px 6%;
+    border-bottom: 4px solid #444;
+}
+
+header h1 {
+    margin: 0 0 8px;
+    font-size: clamp(25px, 4vw, 36px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+header p {
+    margin: 0;
+    color: #bdbdbd;
+    font-size: 15px;
+}
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
+
+main {
+    width: 100%;
+    max-width: 1300px;
+    margin: 35px auto;
+    padding: 0 22px;
+}
+
+/* ========================================
+   PAINÉIS
+======================================== */
+
+.painel,
+.configuracao-api {
+    background: var(--branco);
+    padding: 30px;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+}
+
+.painel h2,
+.configuracao-api h2 {
+    margin-top: 0;
+    color: var(--preto);
+    font-size: 22px;
+    font-weight: 800;
+}
+
+/* ========================================
+   FORMULÁRIO
+======================================== */
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--cinza-escuro);
+}
+
+input,
+select {
+    width: 100%;
+    min-width: 0;
+    padding: 13px 14px;
+
+    border: 1px solid var(--borda);
+    border-radius: 7px;
+
+    background: #fafafa;
+    color: var(--preto);
+
+    font-size: 15px;
+    transition: var(--transicao);
+}
+
+input:hover,
+select:hover {
+    border-color: #999;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--preto);
+    background: var(--branco);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.formulario button {
+    grid-column: 1 / -1;
+}
+
+/* ========================================
+   BOTÕES GERAIS
+======================================== */
+
+button {
+    padding: 13px 18px;
+
+    border: 1px solid var(--preto);
+    border-radius: 7px;
+
+    background: var(--preto);
+    color: var(--branco);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+button:hover:not(:disabled) {
+    background: #383838;
+    border-color: #383838;
+    transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+#mensagem {
+    margin-top: 22px;
+    color: var(--cinza-escuro);
+    line-height: 1.6;
+}
+
+/* ========================================
+   RESULTADOS
+======================================== */
+
+#resultados {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 28px;
+}
+
+/* ========================================
+   CARTÕES
+======================================== */
+
+.carta {
+    min-width: 0;
+    overflow: hidden;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+
+    box-shadow: var(--sombra);
+
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+.carta:hover {
+    transform: translateY(-5px);
+    border-color: #888;
+    box-shadow: var(--sombra-forte);
+}
+
+.imagem-carta {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+
+    margin: 18px auto 0;
+    padding: 0 12px;
+
+    object-fit: contain;
+}
+
+.informacoes {
+    padding: 20px;
+}
+
+.informacoes h2 {
+    margin: 0 0 15px;
+    color: var(--preto);
+    font-size: 19px;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.informacoes p {
+    margin: 10px 0;
+    color: var(--cinza-escuro);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.efeito {
+    white-space: pre-line;
+}
+
+.rotulo {
+    font-weight: 800;
+    color: var(--preto);
+}
+
+.sem-dados {
+    color: var(--cinza);
+}
+
+/* ========================================
+   MODAL
+======================================== */
+
+.modal {
+    position: fixed;
+
+    width: min(750px, 92vw);
+    max-width: 750px;
+
+    height: auto;
+    max-height: 90vh;
+    max-height: 90dvh;
+
+    margin: auto;
+    padding: 0;
+
+    border: 1px solid #bdbdbd;
+    border-radius: 12px;
+
+    background: var(--branco);
+    color: var(--preto);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal::backdrop {
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(4px);
+}
+
+.conteudo-modal {
+    position: relative;
+    width: 100%;
+    padding: 65px 28px 28px;
+    overflow: visible;
+}
+
+/* ========================================
+   FECHAR MODAL
+======================================== */
+
+.fechar-modal {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    padding: 0;
+
+    border: 1px solid var(--preto);
+    border-radius: 7px;
+
+    background: var(--preto);
+    color: var(--branco);
+
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.fechar-modal:hover {
+    background: #444;
+}
+
+/* ========================================
+   DETALHES DA CARTA
+======================================== */
+
+#detalhesCarta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    min-width: 0;
+
+    gap: 12px;
+    padding-bottom: 20px;
+
+    overflow-wrap: anywhere;
+}
+
+#detalhesCarta h2 {
+    width: 100%;
+    margin: 15px 0;
+    text-align: center;
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.imagem-detalhes {
+    display: block;
+
+    width: min(100%, 300px);
+    max-height: 450px;
+    height: auto;
+
+    margin: 20px auto;
+    object-fit: contain;
+
+    filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.15));
+}
+
+#detalhesCarta p {
+    width: 100%;
+    min-width: 0;
+
+    padding: 13px 5px;
+    margin: 0;
+
+    border-bottom: 1px solid var(--cinza-claro);
+
+    text-align: left;
+    line-height: 1.7;
+
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+#detalhesCarta strong {
+    color: var(--preto);
+}
+
+#detalhesCarta .sem-dados {
+    color: var(--cinza);
+    font-style: italic;
+}
+
+/* ========================================
+   STATUS DA BANLIST
+======================================== */
+
+.campo-status {
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: 1px solid transparent;
+}
+
+.campo-status.forbidden {
+    background: #eeeeee;
+    color: #111;
+    border-color: #777;
+}
+
+.campo-status.limited {
+    background: #f5f5f5;
+    color: #333;
+    border-color: #aaa;
+}
+
+.campo-status.semi-limited {
+    background: #e5e5e5;
+    color: #222;
+    border-color: #999;
+}
+
+.campo-status.free {
+    background: #fff;
+    color: #111;
+    border-color: #222;
+}
+
+.campo-status.indisponivel {
+    background: #ddd;
+    color: #555;
+    border-color: #bbb;
+}
+
+/* ========================================
+   TIPOS DE CARTA
+======================================== */
+
+.campo-tipos details {
+    width: 100%;
+}
+
+.campo-tipos summary {
+    padding: 13px;
+
+    border: 1px solid var(--preto);
+    border-radius: 7px;
+
+    background: var(--preto);
+    color: var(--branco);
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.campo-tipos summary:hover {
+    background: #383838;
+}
+
+.campo-tipos details[open] summary {
+    margin-bottom: 12px;
+}
+
+.campo-tipos select {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid var(--borda);
+    background: var(--branco);
+    cursor: pointer;
+}
+
+/* ========================================
+   PAGINAÇÃO
+======================================== */
+
+.paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 18px;
+    margin: 35px 0;
+}
+
+.paginacao button {
+    padding: 12px 22px;
+
+    border: 1px solid var(--preto);
+    border-radius: 7px;
+
+    background: var(--preto);
+    color: var(--branco);
+
+    box-shadow: none;
+}
+
+.paginacao button:hover:not(:disabled) {
+    background: #444;
+}
+
+.paginacao button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+#informacaoPagina {
+    font-weight: 700;
+    color: var(--cinza-escuro);
+}
+
+/* ========================================
+   PREÇOS
+======================================== */
+
+.secao-precos {
+    width: 100%;
+    margin-top: 28px;
+    padding-top: 20px;
+
+    border-top: 2px solid var(--preto);
+}
+
+.secao-precos h3 {
+    margin-bottom: 18px;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.secao-precos p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+    padding: 13px 15px;
+    margin: 10px 0;
+
+    background: #f5f5f5;
+    border: 1px solid var(--borda);
+    border-radius: 7px;
+
+    transition: var(--transicao);
+}
+
+.secao-precos p:hover {
+    background: #eaeaea;
+    border-color: #aaa;
+}
+
+.secao-precos p strong,
+.secao-precos p span {
+    font-weight: 800;
+}
+
+.secao-precos p span {
+    white-space: nowrap;
+}
+
+/* ========================================
+   AÇÕES DA CARTA
+======================================== */
+
+.acoes-carta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.acoes-carta button {
+    padding: 12px 20px;
+    border: 1px solid var(--preto);
+    background: var(--branco);
+    color: var(--preto);
+    font-weight: bold;
+    box-shadow: none;
+}
+
+.acoes-carta button:hover {
+    background: var(--preto);
+    color: var(--branco);
+}
+
+/* ========================================
+   BOTÕES DO MODAL
+======================================== */
+
+.acoes-modal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    width: 100%;
+    margin: 18px 0 0;
+}
+
+button.btn-adicionar-deck,
+button.btn-adicionar-carrinho {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: auto !important;
+    min-width: 155px;
+    min-height: 42px;
+
+    padding: 11px 16px !important;
+
+    color: var(--branco) !important;
+    -webkit-text-fill-color: var(--branco) !important;
+
+    background: var(--preto) !important;
+    border: 1px solid var(--preto) !important;
+    border-radius: 7px;
+
+    font: 700 14px Arial, sans-serif !important;
+
+    text-indent: 0 !important;
+    letter-spacing: normal !important;
+    white-space: normal !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    cursor: pointer;
+}
+
+button.btn-adicionar-deck:hover,
+button.btn-adicionar-carrinho:hover {
+    background: #444 !important;
+}
+
+button.btn-adicionar-carrinho {
+    background: #555 !important;
+}
+
+/* ========================================
+   REMOVER ITENS
+======================================== */
+
+button.btn-remover-item {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 28px !important;
+
+    padding: 6px 10px !important;
+    margin-left: 10px;
+
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+
+    background: #333 !important;
+    border: 1px solid #111 !important;
+    border-radius: 5px;
+
+    font: 600 12px Arial, sans-serif !important;
+
+    cursor: pointer;
+}
+
+button.btn-remover-item:hover {
+    background: #000 !important;
+}
+
+/* ========================================
+   LISTAS DE CARTAS
+======================================== */
+
+#listaDeck li,
+#listaCarrinho li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    padding: 10px;
+    margin: 7px 0;
+
+    border-bottom: 1px solid var(--borda);
+}
+
+/* ========================================
+   DECKS SALVOS
+======================================== */
+
+#listaDecksSalvos {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 25px auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    font-family: Arial, sans-serif;
+    color: var(--preto);
+}
+
+.deck-salvo {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: var(--sombra);
+    transition: var(--transicao);
+}
+
+.deck-salvo:hover {
+    border-color: #999;
+    box-shadow: var(--sombra-forte);
+}
+
+.deck-salvo summary {
+    padding: 18px 22px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    color: var(--branco);
+    background: var(--preto);
+
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    transition: var(--transicao);
+}
+
+.deck-salvo summary:hover {
+    background: #333;
+}
+
+.deck-salvo summary::-webkit-details-marker {
+    display: none;
+}
+
+.deck-salvo summary::after {
+    content: "+";
+    font-size: 23px;
+    color: #fff;
+    font-weight: normal;
+}
+
+.deck-salvo[open] summary::after {
+    content: "−";
+}
+
+.lista-cartas-deck {
+    list-style: none;
+    margin: 0;
+    padding: 15px;
+    background: var(--branco);
+    animation: aparecer 0.2s ease-in-out;
+}
+
+.lista-cartas-deck li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    padding: 13px 15px;
+    margin-bottom: 8px;
+
+    background: #f7f7f7;
+    border: 1px solid var(--borda);
+    border-radius: 7px;
+
+    color: var(--preto);
+    font-size: 14px;
+
+    transition: var(--transicao);
+}
+
+.lista-cartas-deck li:hover {
+    background: #ededed;
+    border-color: #aaa;
+}
+
+.lista-cartas-deck li:last-child {
+    margin-bottom: 0;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#listaDecksSalvos > p {
+    text-align: center;
+    padding: 25px;
+
+    color: var(--cinza);
+    background: var(--branco);
+
+    border: 1px dashed #aaa;
+    border-radius: 10px;
+}
+
+/* ========================================
+   SALVAR DECK
+======================================== */
+
+.campo-salvar-deck {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.campo-salvar-deck label {
+    color: var(--preto);
+    font-weight: bold;
+}
+
+.campo-salvar-deck input {
+    padding: 13px 15px;
+
+    border: 1px solid var(--borda);
+    border-radius: 7px;
+
+    background: var(--branco);
+    color: var(--preto);
+    font-size: 15px;
+}
+
+.campo-salvar-deck input:focus {
+    border-color: var(--preto);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.campo-salvar-deck button {
+    background: var(--preto);
+    color: var(--branco);
+}
+
+.campo-salvar-deck button:hover {
+    background: #444;
+}
+
+/* ========================================
+   REMOVER DECK
+======================================== */
+
+.deck-salvo > summary {
+    cursor: pointer;
+}
+
+.botao-remover-deck {
+    display: inline-block;
+
+    padding: 8px 13px;
+    margin: 10px;
+
+    border: 1px solid var(--preto);
+    border-radius: 6px;
+
+    background: var(--branco);
+    color: var(--preto);
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-remover-deck:hover {
+    background: var(--preto);
+    color: var(--branco);
+}
+
+/* ========================================
+   HISTÓRICO DE PREÇOS
+======================================== */
+
+.secao-historico {
+    margin-top: 25px;
+    padding: 20px;
+
+    border-top: 1px solid var(--borda);
+    background: #fafafa;
+    border-radius: 8px;
+}
+
+.secao-historico h3 {
+    margin-bottom: 15px;
+    font-size: 19px;
+}
+
+.secao-historico button {
+    padding: 11px 16px;
+
+    border: 1px solid var(--preto);
+    border-radius: 6px;
+
+    background: var(--preto);
+    color: var(--branco);
+}
+
+.secao-historico button:hover {
+    background: #444;
+}
+
+.area-grafico {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+
+.secao-historico p {
+    overflow-wrap: anywhere;
+    font-size: 13px;
+    margin-top: 10px;
+    color: var(--cinza);
+}
+
+/* ========================================
+   PREÇOS SALVOS
+======================================== */
+
+.precos-carta-salva {
+    margin: 12px 0;
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    background: #f8f8f8;
+    color: var(--preto);
+
+    overflow: hidden;
+}
+
+.precos-carta-salva summary {
+    padding: 12px 15px;
+
+    cursor: pointer;
+    font-weight: bold;
+
+    color: var(--branco);
+    background: var(--preto);
+
+    list-style: none;
+}
+
+.precos-carta-salva summary::-webkit-details-marker {
+    display: none;
+}
+
+.precos-carta-salva summary::after {
+    content: "+";
+    float: right;
+    font-size: 18px;
+}
+
+.precos-carta-salva[open] summary::after {
+    content: "−";
+}
+
+.precos-carta-salva ul {
+    list-style: none;
+    padding: 8px 15px;
+    margin: 0;
+}
+
+.precos-carta-salva li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 11px 5px;
+
+    border-bottom: 1px solid var(--borda);
+
+    font-size: 14px;
+    gap: 10px;
+}
+
+.precos-carta-salva li:last-child {
+    border-bottom: none;
+}
+
+.precos-carta-salva li:hover {
+    background: #eeeeee;
+}
+
+/* ========================================
+   CONFIGURAÇÃO DA API
+======================================== */
+
+.configuracao-api {
+    max-width: 650px;
+    margin: 25px auto;
+}
+
+.campo-api {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.campo-api label {
+    font-weight: bold;
+}
+
+.input-api-container {
+    display: flex;
+    gap: 8px;
+}
+
+.input-api-container input {
+    flex: 1;
+    min-width: 0;
+    padding: 11px;
+
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+
+    font-size: 14px;
+}
+
+.botao-visualizar {
+    padding: 10px 15px;
+    background: #555;
+    color: white;
+}
+
+.botao-visualizar:hover {
+    background: #333;
+}
+
+.botao-salvar-api {
+    padding: 12px;
+    background: var(--preto);
+    color: white;
+}
+
+.botao-salvar-api:hover {
+    background: #444;
+}
+
+#statusChaveApi {
+    font-size: 13px;
+    color: var(--cinza);
+    margin: 0;
+}
+
+/* ========================================
+   CARRINHO SALVO
+======================================== */
+
+.carrinho-salvo {
+    padding: 14px;
+    margin-bottom: 12px;
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    background: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+.carrinho-salvo > summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--preto);
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 650px) {
+
+    main {
+        margin: 20px auto;
+        padding: 0 14px;
+    }
+
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+
+    .painel,
+    .configuracao-api {
+        padding: 20px;
+    }
+
+    #resultados {
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 15px;
+    }
+
+    .conteudo-modal {
+        padding: 60px 18px 22px;
+    }
+
+    .acoes-modal {
+        flex-direction: column;
+    }
+
+    button.btn-adicionar-deck,
+    button.btn-adicionar-carrinho {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    header {
+        padding: 25px 5%;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .modal {
+        width: 94vw;
+        max-width: none;
+        max-height: 92vh;
+        max-height: 92dvh;
+    }
+
+    .imagem-detalhes {
+        width: min(75%, 260px);
+    }
+
+    #detalhesCarta p {
+        padding: 10px 5px;
+    }
+
+    .secao-precos p {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .secao-precos p span {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .input-api-container {
+        flex-direction: column;
+    }
+
+    .paginacao {
+        gap: 10px;
+    }
+
+    .paginacao button {
+        padding: 10px 13px;
+        font-size: 13px;
+    }
+
+    .lista-cartas-deck {
+        padding: 10px;
+    }
+
+    .lista-cartas-deck li {
+        padding: 11px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    #resultados {
+        grid-template-columns: 1fr;
+    }
+
+    .painel {
+        padding: 15px;
+    }
+
+    .paginacao button {
+        padding: 9px;
+        font-size: 12px;
+    }
+
+    .acoes-carta {
+        flex-direction: column;
+    }
+}
+
+/* ========================================
+   BOTÕES DE ADIÇÃO
+======================================== */
+
+#adicionarDeck,
+#adicionarCarrinho,
+#adicionarSideDeck {
+    background: var(--preto);
+    color: var(--branco);
+    border: 1px solid var(--preto);
+}
+
+#adicionarDeck:hover,
+#adicionarCarrinho:hover,
+#adicionarSideDeck:hover {
+    background: #444;
+}
+/* ========================================
+   PREÇO TOTAL DO DECK
+======================================== */
+
+.lista-precos-totais {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Cartão individual de cada loja */
+.preco-total-loja {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+    padding: 16px 18px;
+
+    background: #ffffff;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+
+    transition: 0.2s ease;
+}
+
+/* Efeito ao passar o mouse */
+.preco-total-loja:hover {
+    background: #f1f1f1;
+    border-color: #999;
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Nome da loja */
+.preco-total-loja span {
+    color: #666666;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Valor */
+.preco-total-loja strong {
+    color: #111111;
+    font-size: 16px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* Título */
+.lista-precos-totais + * {
+    margin-top: 15px;
+}
+
+/* Cabeçalho do preço total */
+h4 {
+    color: #111111;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .lista-precos-totais {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .preco-total-loja {
+        padding: 13px 15px;
+    }
+
+    .preco-total-loja strong {
+        font-size: 15px;
+    }
+}
+/* ========================================
+   INFORMAÇÕES DO DECK
+======================================== */
+
+.informacoes-deck {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.informacoes-deck p {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 16px 18px;
+
+    background: #ffffff;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    transition: 0.2s ease;
+}
+
+.informacoes-deck p:hover {
+    background: #f5f5f5;
+    border-color: #999999;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08);
+}
+
+.informacoes-deck strong {
+    color: #666666;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.informacoes-deck span {
+    color: #111111;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .informacoes-deck {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .informacoes-deck p {
+        padding: 13px 15px;
+    }
+
+    .informacoes-deck span {
+        font-size: 15px;
+    }
+}
+.titulo-preco-deck {
+    color: #111111;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 25px 0 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #222222;
+    letter-spacing: -0.4px;
+}

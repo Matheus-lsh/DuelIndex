@@ -18,3 +18,9 @@ dos preços de cartas de yu-gi-oh.
 
 ### Histórico de preços
 ![Histórico de preços](./rep/imagens/historico.png)
+
+## Instruções de instalação
+-baixe/clone o repositório
+-verifique se as dependências do Flask,flask request e flask cors estão instaladas.
+-rode o arquivo api_rest.py.
+-rode a pagina localmente.

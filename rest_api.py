@@ -114,19 +114,19 @@ def preco_cartas(decks,tributo):
     for carta in decks:
         if float(carta["precos"]["cardmarket_price"]) > 0:
             preco_cardmarket_price += float(carta["precos"]["cardmarket_price"]) * int(carta["quantidade"])
-            preco_cardmarket_price = preco_cardmarket_price * tributo["cotacoes"]["euro"]["valor"] + tributo["impostos"]["uniao_europeia"]["imposto_importacao"]
+            preco_cardmarket_price = preco_cardmarket_price * tributo["cotacoes"]["euro"]["valor"]
         if float(carta["precos"]["tcgplayer_price"]) > 0:
             preco_tcgplayer_price += float(carta["precos"]["tcgplayer_price"]) * int(carta["quantidade"])
-            preco_tcgplayer_price = preco_tcgplayer_price * tributo["cotacoes"]["dolar"]["valor"] + tributo["impostos"]["estados_unidos"]["imposto_importacao"]
+            preco_tcgplayer_price = preco_tcgplayer_price * tributo["cotacoes"]["dolar"]["valor"]
         if float(carta["precos"]["ebay_price"]) > 0:
             preco_ebay_price += float(carta["precos"]["ebay_price"]) * int(carta["quantidade"])
-            preco_ebay_price = preco_ebay_price * tributo["cotacoes"]["dolar"]["valor"] + tributo["impostos"]["estados_unidos"]["imposto_importacao"]
+            preco_ebay_price = preco_ebay_price * tributo["cotacoes"]["dolar"]["valor"]
         if float(carta["precos"]["amazon_price"]) > 0:
             preco_amazon_price += float(carta["precos"]["amazon_price"]) * int(carta["quantidade"])
-            preco_amazon_price = preco_amazon_price * tributo["cotacoes"]["dolar"]["valor"] + tributo["impostos"]["estados_unidos"]["imposto_importacao"]
+            preco_amazon_price = preco_amazon_price * tributo["cotacoes"]["dolar"]["valor"]
         if float(carta["precos"]["coolstuffinc_price"]) > 0:
             preco_coolstuffinc_price += float(carta["precos"]["coolstuffinc_price"]) * int(carta["quantidade"])
-            preco_coolstuffinc_price = preco_coolstuffinc_price * tributo["cotacoes"]["dolar"]["valor"] + tributo["impostos"]["estados_unidos"]["imposto_importacao"]
+            preco_coolstuffinc_price = preco_coolstuffinc_price * tributo["cotacoes"]["dolar"]["valor"]
     return [preco_cardmarket_price,preco_tcgplayer_price,preco_ebay_price,preco_amazon_price,preco_coolstuffinc_price]
 
 if __name__ == "__main__":
